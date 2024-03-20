@@ -1,0 +1,121 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* Ramka uchun umumiy klaslar */
+.figure {
+  /* Ramkaning o'lchamlari */
+  width: 300px;
+  height: 300px;
+  /* ramkaning orqa foni rangi */
+  background-color: #f06292;
+  /* Yozuv rangi */
+  color: #fff;
+  /* Ramkalar yonmayon turishi uchun */
+  display: inline-flex;
+  /* Ramka ichidagi matnlar Y o'q bo'yicha markazda turushi uchun */
+  justify-content: center;
+  /* Ramka ichidagi elementlar X o'q bo'yicha markazda turishi uchun */
+  align-items: center;
+  /* Ramka ichidagi matn X oqi bo'yicha markazda turishi uhcun */
+  text-align: center;
+  /* Ramkaning ichidagi elementlar ramkaga nispatan joylashishi uchun */
+  position: relative;
+}
+
+/* Ramkalar orasini ochish uchun */
+.figure:not(:last-child) {
+  margin-right: 10px;
+}
+
+/* Ramkaning ichidagi sarlavha matni klasi */
+.figure h2 {
+  /* Matni Y o'qi bo'ylab 20px pastga tushuradi */
+ transition: 0.2s;
+ /* Sarlavha matni holatini o'zgartishishi uchun ketgan vaqt */
+ transform: translateY(20px);
+}
+
+/* Ramka ichidagi kichkina patn klasi */
+.figure p {
+  /* Matn holatini o'zgartirishi uchun ketadigan vaqt */
+  transition: 0.2s;
+  /* Matn Y o' bo'ylab 20 px tepaga chiqadi */
+  transform: translateY(-20px);
+  /* Matn oddiy olatda umuman ko'rinmaydi */
+  opacity: 0;
+   /* Elementni lo'rinmas qiladi */
+  visibility: hidden;
+ }
+
+
+ /* Ramka uchun psevda element */
+ .figure::before {
+  /* psevda elementda har doim kiritilishi kerak */
+  content: '';
+  /* Ramkaning psevda elementi ramkaga nisbatan joylashishi uchun */
+  position: absolute;
+  /* Psevda element rankaning tomonlaridan o'zining o'chamidan 5% joy tashlab joylashadi */
+  top: 5%;
+  right: 5%;
+  bottom: 5%;
+  left: 5%;
+  /* Ramkapsevda elementi sifatida tepa pastdan border berilayapdi */
+  border-top: solid 2px;
+  border-bottom: solid 2px;
+  /* Psevda elementlar holatini o'zgartirishi uchun ketadigan vaqt */
+  transition: 0.2s;
+  /* Psevda element X oq bo'yicha kattalashini 0 qilib qo'yayapdi */
+  transform: scaleX(0);
+}
+
+
+/* Psevda element hover holatda kattalashishini o'zining o'lchamiga tenglashtirib qo'yayapdi */
+.figure:hover::before {
+  transform: scale(1);
+}
+
+/* Ramka uchun psevda element */
+.figure::after {
+   /* psevda elementda har doim kiritilishi kerak */
+   content: '';
+   /* Ramkaning psevda elementi ramkaga nisbatan joylashishi uchun */
+   position: absolute;
+   /* Psevda element rankaning tomonlaridan o'zining o'chamidan 5% joy tashlab joylashadi */
+   top: 5%;
+   right: 5%;
+   bottom: 5%;
+   left: 5%;
+   /* Ramkapsevda elementi sifatida ikki yonidan border berilayapdi */
+  border-left: solid 2px;
+  border-right: solid 2px;
+  /* Psevda element kattalashini 0 qilib qo'yayapdi */
+  transition: 0.2s;
+  /* Psevda element Y oq bo'yicha kattalashini 0 qilib qo'yayapdi */
+  transform: scaleY(0);
+}
+
+
+/* Psevda elementlar hover holadida o'z o'lchamocha kattalashayapdi */
+.figure:hover::before,
+.figure:hover::after {
+  transform: scale(1);
+}
+
+
+/* ramka ichidagi matnlar hover holatidagi klasi */
+.figure:hover h2,
+.figure:hover p {
+  /* Hover holatina matnlar Y o'q bo'yicha surulmaydi */
+  transform: translateY(0);
+  /* Matinlar ko'rinadi */
+  opacity: 1;
+  /* Matinlar ko'rinadi */
+  visibility: visible;
+}
